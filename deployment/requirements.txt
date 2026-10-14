@@ -1,0 +1,8 @@
+# Deployment additions.  PyTorch is intentionally not pinned or installed here:
+# use the project's existing CPU-compatible PyTorch build for export/reference.
+onnx==1.23.2
+onnxruntime==1.31.0
+numpy==2.5.3
+rasterio==1.5.2
+pyproj==3.8.0
+PyYAML==6.0.3

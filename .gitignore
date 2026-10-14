@@ -1,0 +1,95 @@
+# ---------------------------------------------------------------------------
+# UHI model repository .gitignore
+# This repository is the source of truth for the trained model, its
+# architecture, deployment/inference code and model-side contracts only.
+# Datasets, tests, evaluation outputs, experiments and training artifacts are
+# intentionally excluded. See README.md for what belongs here.
+# ---------------------------------------------------------------------------
+
+# --- Frozen datasets / preprocessing (live outside this repository) ---
+data/
+datasets/
+processed_dataset/
+processed_temporal/
+uhi_masks/
+raw/
+s3/
+*.tif
+*.tiff
+*.npy
+*.geojson
+*.gpkg
+*.shp
+
+# --- Training artifacts and checkpoints (baseline_full/best.pt force-included) ---
+outputs/
+runs/
+logs/
+*.pt
+*.pth
+*.ckpt
+events.out.tfevents.*
+*.pid
+
+# --- Retained model artifact ONLY (explicitly kept) ---
+!checkpoints/
+checkpoints/*
+!checkpoints/baseline_full/
+checkpoints/baseline_full/*
+!checkpoints/baseline_full/best.pt
+
+# --- Tests ---
+tests/
+test_*.py
+*_test.py
+.pytest_cache/
+
+# --- Evaluation artifacts and experiments (source .py is kept) ---
+evaluation/*/
+evaluation/*.json
+evaluation/*.csv
+evaluation/*.md
+experiments/
+audit_reports/
+scripts/
+notebooks/
+*.png
+
+# --- Deployment generated outputs (ONNX artifact + reports are kept) ---
+deployment/artifacts/baseline_*/
+deployment/artifacts/vegetation_*/
+deployment/artifacts/reflective_*/
+deployment/artifacts/bare_soil_*/
+
+# --- Loose development / scratch files ---
+IMPLEMENTATION_REPORT.md
+make_architecture_figure.py
+make_paper_figures.py
+folder-structure.txt
+s.txt
+USB Drive (E) - Shortcut.lnk
+
+# --- Temporary / local / OS / IDE ---
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+*.lnk
+*.tmp
+*.log
+
+# --- Secrets / credentials ---
+.env
+.env.*
+*.pem
+*.key
+credentials*
+secrets*

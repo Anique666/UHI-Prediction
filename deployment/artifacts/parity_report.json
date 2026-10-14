@@ -1,0 +1,134 @@
+{
+  "passed": true,
+  "acceptance_max_abs_celsius": 0.001,
+  "max_abs_normalized": 1.1920928955078125e-06,
+  "mean_abs_normalized": 9.967698814487373e-08,
+  "max_abs_celsius": 5.1195167397908684e-06,
+  "mean_abs_celsius": 4.28068996386593e-07,
+  "dynamic_batch_sizes_tested": [
+    1,
+    2,
+    3
+  ],
+  "repeatable": true,
+  "real_patch_records": [
+    {
+      "sample_id": 0,
+      "row_off": 192,
+      "col_off": 704,
+      "input_months": [
+        "2019-01",
+        "2019-02",
+        "2019-03",
+        "2019-04",
+        "2019-05",
+        "2019-06",
+        "2019-07",
+        "2019-08",
+        "2019-09",
+        "2019-10",
+        "2019-11",
+        "2019-12"
+      ],
+      "target_month": "2020-01"
+    },
+    {
+      "sample_id": 3539,
+      "row_off": 768,
+      "col_off": 512,
+      "input_months": [
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11"
+      ],
+      "target_month": "2024-12"
+    },
+    {
+      "sample_id": 7079,
+      "row_off": 1152,
+      "col_off": 640,
+      "input_months": [
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11"
+      ],
+      "target_month": "2024-12"
+    }
+  ],
+  "batch_results": [
+    {
+      "batch_size": 1,
+      "output_shape": [
+        1,
+        1,
+        128,
+        128
+      ],
+      "max_abs_normalized": 1.1920928955078125e-06,
+      "mean_abs_normalized": 9.884828422457304e-08,
+      "max_abs_celsius": 5.1195167397908684e-06,
+      "mean_abs_celsius": 4.2451007609749714e-07
+    },
+    {
+      "batch_size": 2,
+      "output_shape": [
+        2,
+        1,
+        128,
+        128
+      ],
+      "max_abs_normalized": 1.1920928955078125e-06,
+      "mean_abs_normalized": 9.233540954056707e-08,
+      "max_abs_celsius": 5.1195167397908684e-06,
+      "mean_abs_celsius": 3.965401325682849e-07
+    },
+    {
+      "batch_size": 3,
+      "output_shape": [
+        3,
+        1,
+        128,
+        128
+      ],
+      "max_abs_normalized": 1.1920928955078125e-06,
+      "mean_abs_normalized": 1.048476085211784e-07,
+      "max_abs_celsius": 5.1195167397908684e-06,
+      "mean_abs_celsius": 4.5027454569516364e-07
+    }
+  ],
+  "onnx_path": "C:\\uhi-model\\deployment\\artifacts\\convlstm_lst.onnx",
+  "onnx_sha256": "5ba7395c217eb7d97534d710c8de8c4bf349eadad59bc4989bf6cbf88b06bd20",
+  "checkpoint_sha256_before": "72cb9a6422f073aa5419a12f806c8fbb2a38fc46332c4a0dad82249c423fa91b",
+  "checkpoint_sha256_after": "72cb9a6422f073aa5419a12f806c8fbb2a38fc46332c4a0dad82249c423fa91b",
+  "checkpoint_unchanged": true,
+  "versions": {
+    "torch": "2.13.0+cu132",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.3",
+    "rasterio": "1.5.2",
+    "pyproj": "3.8.0",
+    "yaml": "6.0.3"
+  },
+  "providers": [
+    "CPUExecutionProvider"
+  ]
+}

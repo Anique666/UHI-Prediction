@@ -1,0 +1,68 @@
+# Baseline ConvLSTM configuration for the Bengaluru UHI forecasting project.
+#
+# Paths may be absolute (Windows) or relative to the project root
+# (C:\uhi-model). The frozen preprocessing contract is never modified here:
+# this file only selects which split to load and how the model is trained.
+
+project_root: "C:/uhi-model"
+
+paths:
+  # Frozen data locations (read-only).
+  data_root: "C:/Users/PC-012/Desktop/uhi"
+  dataset_root: "C:/Users/PC-012/Desktop/uhi/processed_dataset"
+  temporal_root: "C:/Users/PC-012/Desktop/uhi/processed_temporal"
+  mask_dir: "C:/Users/PC-012/Desktop/uhi/uhi_masks"
+
+  # Experiment outputs (written; never overwrite frozen inputs).
+  checkpoints_dir: "checkpoints"
+  outputs_dir: "outputs"
+  evaluation_dir: "evaluation"
+
+data:
+  sequence_length: 12
+  input_channels: 18
+  patch_size: 128
+  lst_channel: "LST_Celsius"
+  lst_channel_index: 0
+
+model:
+  hidden_channels: 64
+  kernel_size: 3
+  output_channels: 1
+  num_layers: 2
+
+training:
+  batch_size: 4
+  num_epochs: 60
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  num_workers: 0
+  shuffle_train: true
+  pin_memory: true
+  seed: 42
+  early_stopping_patience: 10
+  early_stopping_min_delta: 0.0001
+  gradient_clip: 1.0
+  amp: false
+  log_every_n_batches: 10
+  # Retain up to this many compact candidate checkpoints (weights only), ranked
+  # by validation masked-MAE, so hotspot metrics can later be compared across
+  # nearby epochs. Set to 0 to disable.
+  keep_candidate_checkpoints: 3
+
+  # Hotspot-weighted loss experiment (opt-in). Disabled by default, so the
+  # baseline reproduces the original masked-MAE training exactly. When enabled,
+  # extra (capped) loss weight is applied to high-temperature URBAN target
+  # pixels. Thresholds are in normalized LST (frozen train-only z-scores);
+  # with the frozen stats (mean=34.328, std=4.295) hot_z=1.0 ~= 38.6 C and
+  # extreme_z=1.5 ~= 40.8 C.
+  hotspot_loss:
+    enabled: false
+    hot_z: 1.0
+    extreme_z: 1.5
+    w_hot: 2.0
+    w_extreme: 5.0
+
+evaluation:
+  batch_size: 4
+  num_workers: 0

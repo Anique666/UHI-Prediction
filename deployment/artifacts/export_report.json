@@ -1,0 +1,65 @@
+{
+  "onnx_path": "C:\\uhi-model\\deployment\\artifacts\\convlstm_lst.onnx",
+  "onnx_sha256": "5ba7395c217eb7d97534d710c8de8c4bf349eadad59bc4989bf6cbf88b06bd20",
+  "checkpoint_path": "C:\\uhi-model\\checkpoints\\baseline_full\\best.pt",
+  "checkpoint_sha256_before": "72cb9a6422f073aa5419a12f806c8fbb2a38fc46332c4a0dad82249c423fa91b",
+  "checkpoint_sha256_after": "72cb9a6422f073aa5419a12f806c8fbb2a38fc46332c4a0dad82249c423fa91b",
+  "checkpoint_unchanged": true,
+  "opset": 17,
+  "ir_version": 8,
+  "producer": "pytorch 2.13.0",
+  "input": {
+    "name": "input",
+    "type": "tensor(float)",
+    "shape": [
+      "batch",
+      12,
+      18,
+      128,
+      128
+    ]
+  },
+  "output": {
+    "name": "lst_normalized",
+    "type": "tensor(float)",
+    "shape": [
+      "batch",
+      1,
+      128,
+      128
+    ]
+  },
+  "graph_ops": [
+    "Add",
+    "Concat",
+    "Constant",
+    "ConstantOfShape",
+    "Conv",
+    "Div",
+    "Gather",
+    "Mul",
+    "Relu",
+    "Shape",
+    "Sigmoid",
+    "Slice",
+    "Tanh",
+    "Unsqueeze"
+  ],
+  "dynamic_axes": {
+    "input": {
+      "0": "batch"
+    },
+    "lst_normalized": {
+      "0": "batch"
+    }
+  },
+  "dependency_versions": {
+    "torch": "2.13.0+cu132",
+    "onnx": "1.23.2",
+    "onnxruntime": "1.31.0",
+    "numpy": "2.5.3",
+    "rasterio": "1.5.2",
+    "pyproj": "3.8.0",
+    "yaml": "6.0.3"
+  }
+}
