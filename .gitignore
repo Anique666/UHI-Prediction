@@ -63,6 +63,8 @@ deployment/artifacts/bare_soil_*/
 
 # --- Loose development / scratch files ---
 IMPLEMENTATION_REPORT.md
+deployment/PROGRESS.md
+deployment/TASK.md
 make_architecture_figure.py
 make_paper_figures.py
 folder-structure.txt
